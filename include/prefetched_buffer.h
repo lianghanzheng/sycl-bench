@@ -53,7 +53,7 @@ public:
   }
 
 
-  template <cl::sycl::access::mode mode, cl::sycl::access::target target = cl::sycl::access::target::global_buffer>
+  template <cl::sycl::access::mode mode, cl::sycl::access::target target = cl::sycl::access::target::device>
   auto get_access(cl::sycl::handler& commandGroupHandler) {
     return buff->template get_access<mode, target>(commandGroupHandler);
   }
@@ -63,7 +63,7 @@ public:
     return buff->template get_access<mode>();
   }
 
-  template <cl::sycl::access::mode mode, cl::sycl::access::target target = cl::sycl::access::target::global_buffer>
+  template <cl::sycl::access::mode mode, cl::sycl::access::target target = cl::sycl::access::target::device>
   auto get_access(cl::sycl::handler& commandGroupHandler, cl::sycl::range<Dimensions> accessRange,
       cl::sycl::id<Dimensions> accessOffset = {}) {
     return buff->template get_access<mode, target>(commandGroupHandler, accessRange, accessOffset);

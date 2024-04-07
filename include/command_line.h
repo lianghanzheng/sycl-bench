@@ -255,9 +255,9 @@ private:
 #endif
 
     if(device_type == "cpu") {
-      return cl::sycl::queue{cl::sycl::cpu_selector{}, getQueueProperties()};
+      return cl::sycl::queue{cl::sycl::cpu_selector_v, getQueueProperties()};
     } else if(device_type == "gpu") {
-      return cl::sycl::queue{cl::sycl::gpu_selector{}, getQueueProperties()};
+      return cl::sycl::queue{cl::sycl::gpu_selector_v, getQueueProperties()};
     } else if(device_type == "default") {
       return cl::sycl::queue{getQueueProperties()};
     } else {
